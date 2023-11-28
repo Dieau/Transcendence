@@ -28,6 +28,7 @@ Key Features:
 - User profile customization, settings management, friendlists, and blocklists.
 - Docker deployment.
 
+*NB: This project requires secret credentials to deploy and build. I did not include our .env or database passwords. If you wish to build and deploy this website using docker, use your own credentials and env variables (OAuth callback URLs, DB passwords, JWT keys, and front/back URLs).*
 <a name="stack"></a>
 ## 2. Tech Stack
 
