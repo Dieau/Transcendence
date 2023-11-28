@@ -1,0 +1,37 @@
+subscription allGamesStatsUpdated {
+    allGamesStatsUpdated {
+        id
+        opponentId
+        isWinner
+        userScore
+        opponentScore
+        createdAt
+        isDeleted
+    }
+}
+
+subscription allGamesStatsUpdatedForUser($userId: String!) {
+    allGamesStatsUpdatedForUser(userId: $userId) {
+        id
+        opponentId
+		userId
+        isWinner
+        userScore
+        opponentScore
+        createdAt
+		isDeleted
+    }
+}
+
+query FindAllGameStatsSoftLimit {
+    findAllGameStatsSoftLimit {
+        id
+		userId
+        opponentId
+        isWinner
+        userScore
+        opponentScore
+        createdAt
+        isDeleted
+    }
+}

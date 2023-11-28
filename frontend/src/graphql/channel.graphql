@@ -1,0 +1,101 @@
+mutation CreateChannel($args: CreateChannelInput!) {
+  createChannel(args: $args) {
+    id
+  }
+}
+
+mutation UpdateChannel($args: UpdateChannelInput!) {
+  updateChannel(args: $args) {
+    id
+  }
+}
+
+mutation DeleteChannel($args: DeleteChannelInput!) {
+  deleteChannel(args: $args) {
+    id
+  }
+}
+
+query FindAllVisibleChannels {
+  findAllVisibleChannels {
+    id
+    name
+    avatarUrl
+    channelType
+    createdAt
+  }
+}
+
+query FindAllChannelsForUser {
+  findAllChannelsForUser {
+    id
+    name
+    avatarUrl
+    channelType
+    createdAt
+  }
+}
+
+query FindChannel($args: FindChannelInput!) {
+  findChannel(args: $args) {
+    id
+    name
+    avatarUrl
+    channelType
+    createdAt
+  }
+}
+
+query CheckChannelName($args: CheckChannelInput!) {
+  checkChannelName(args: $args)
+}
+
+subscription OnCreateChannel {
+  onCreateChannel {
+    id
+    name
+    avatarUrl
+    channelType
+    createdAt
+  }
+}
+
+subscription OnUpdateChannel($args: OnChannelInput!) {
+  onUpdateChannel(args: $args) {
+    id
+    name
+    avatarUrl
+    channelType
+    createdAt
+  }
+}
+
+subscription OnDeleteChannel($args: OnChannelInput!) {
+  onDeleteChannel(args: $args) {
+    id
+    name
+    avatarUrl
+    channelType
+    createdAt
+  }
+}
+
+mutation SendDirectMessage($args: SendDirectMessageInput!) {
+  sendDirectMessage(args: $args) {
+    id
+    name
+    avatarUrl
+    channelType
+    createdAt
+  }
+}
+
+subscription OnNewVisibleChannel {
+  onNewVisibleChannel {
+    id
+    name
+    avatarUrl
+    channelType
+    createdAt
+  }
+}

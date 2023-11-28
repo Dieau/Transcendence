@@ -1,0 +1,213 @@
+subscription AllGamesUpdated {
+    allGamesUpdated {
+		id
+        message
+        isDeleted
+        createdAt
+        targetUserId
+        gameMembers {
+            gameId
+            userId
+            score
+            userGameInfos {
+                id
+                username
+                avatarUrl
+                ratio
+            }
+        }
+    }
+}
+
+query FindAllGames {
+    findAllGames {
+		id
+        message
+        isDeleted
+        createdAt
+        targetUserId
+        gameMembers {
+            gameId
+            userId
+            score
+            userGameInfos {
+                id
+                username
+                avatarUrl
+                ratio
+            }
+        }
+    }
+}
+
+mutation CreateGame($message: String, $userTargetId: String) {
+    createGame(message: $message, userTargetId: $userTargetId) {
+        id
+        message
+        isDeleted
+        createdAt
+        targetUserId
+        gameMembers {
+            gameId
+            userId
+            userGameInfos {
+                id
+                username
+                avatarUrl
+                ratio
+            }
+        }
+    }
+}
+
+mutation LeaveGame {
+    leaveGame
+}
+
+query FindPublicGameInfosForUser($userId: String!) {
+    findPublicGameInfosForUser(userid: $userId) {
+        id
+        username
+        avatarUrl
+        ratio
+    }
+}
+
+mutation LeaveGameMatchmakingMember {
+    leaveGameMatchmakingMember {
+        userId
+        message
+    }
+}
+
+mutation JoinGameMatchmakingMember($message:String, $userTargetId: String) {
+    joinGameMatchmakingMember(message: $message, userTargetId: $userTargetId) {
+        userId
+        message
+        isDeleted
+        targetUserId
+        userGameInfos {
+            id
+            username
+            avatarUrl
+            ratio
+        }
+    }
+}
+
+mutation DeleteGame($gameId: String!) {
+    deleteGame(args: { id: $gameId }) {
+        id
+        message
+        isDeleted
+        targetUserId
+        createdAt
+    }
+}
+
+mutation joinGame($gameId:String!) {
+    joinGame(args: { id: $gameId }) {
+        message
+        isDeleted
+        targetUserId
+        createdAt
+        gameMembers {
+            gameId
+            userId
+            userGameInfos {
+                id
+                username
+                avatarUrl
+                ratio
+            }
+        }
+    }
+}
+
+subscription MatchmakingMembersChanged {
+    matchmakingMembersChanged {
+        userId
+        isDeleted
+        targetUserId
+        isLaunched
+        userGameInfos {
+            id
+            username
+            avatarUrl
+            ratio
+        }
+        message
+    }
+}
+
+subscription UserGameUpdated($userId: String!) {
+    UserGameUpdated(userId: $userId) {
+        id
+        message
+        isDeleted
+        targetUserId
+        createdAt
+        gameMembers {
+            gameId
+            userId
+            score
+            userGameInfos {
+                id
+                username
+                avatarUrl
+                ratio
+            }
+        }
+    }
+}
+
+query GetUserGameBeforeStart {
+    getUserGameBeforeStart {
+        id
+        message
+        isDeleted
+        targetUserId
+        createdAt
+        gameMembers {
+            gameId
+            userId
+            score
+            userGameInfos {
+                id
+                username
+                avatarUrl
+                ratio
+            }
+        }
+    }
+}
+
+
+query FindAllGameMatchmakingMemberl {
+    findAllGameMatchmakingMemberl {
+        userId
+        isDeleted
+        targetUserId
+        isLaunched
+        userGameInfos {
+            id
+            username
+            avatarUrl
+            ratio
+        }
+        message
+    }
+}
+
+mutation RefusePrivateGameInvitation($gameId: String!) {
+    refusePrivateGameInvitation(gameId: $gameId)
+}
+
+mutation RefuseMatchMakingInvite($matchMakerId: String!) {
+    refuseMatchMakingInvite(matchMakerId: $matchMakerId) {
+        userId
+        message
+        isDeleted
+        targetUserId
+    }
+}

@@ -1,0 +1,133 @@
+:root {
+  --el-border-radius-base: 8px;
+  --el-border-width: 1px;
+  --el-input-focus-border-color: var(--el-color-primary);
+  --my-box-shadow: 0 0 10px var(--el-color-primary), 0 0 20px var(--el-color-primary);
+
+
+  --el-sun-yellow: #fcb127 !important;
+  --el-sun-pink: #f674cb !important;
+  --el-trasparent: #ffffff00 !important;
+  --el-color-primary: hwb(300 26% 0%) !important;
+  --el-color-primary-light-3: hsl(300, 57%, 46%) !important;
+  --el-color-primary-light-5: hsl(300, 53%, 35%) !important;
+  --el-color-primary-light-7: hsl(300, 47%, 24%) !important;
+  --el-color-primary-light-8: hsl(300, 40%, 19%) !important;
+  --el-color-primary-light-9: hsl(300, 29%, 13%) !important;
+  --el-color-primary-dark-2: hsl(300, 100%, 70%) !important;
+  --el-color-yellow: rgb(255, 239, 66) !important;
+  --el-color-blue: rgb(1, 23, 254) !important;
+
+}
+
+$default-font: 'BaseRetroWave', 'sans-serif';
+
+@font-face {
+  font-family: 'BaseRetroWave';
+  src: url('./assets/fonts/VCR_OSD_MONO_1.001.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Vaporfuturism";
+  src: url("./assets/fonts/VaporfuturismCond.otf");
+}
+
+@font-face {
+  font-family: "WR";
+  src: url('./assets/fonts/WR.ttf')
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("./assets/fonts/Roboto-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("./assets/fonts/Roboto-BlackItalic.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("./assets/fonts/Roboto-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("./assets/fonts/Roboto-BoldItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("./assets/fonts/Roboto-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("./assets/fonts/Roboto-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("./assets/fonts/Roboto-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("./assets/fonts/Roboto-Italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("./assets/fonts/Roboto-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("./assets/fonts/Roboto-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("./assets/fonts/Roboto-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("./assets/fonts/Roboto-ThinItalic.ttf") format("truetype");
+  font-weight: 100;
+  font-style: italic;
+}
+
+body {
+  font-family: $default-font;
+}
+
+.panel-blur {
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}

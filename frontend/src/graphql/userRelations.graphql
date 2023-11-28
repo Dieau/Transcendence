@@ -1,0 +1,170 @@
+query FindAllRelationsForMyUser {
+  findAllRelationsForMyUser {
+    userOwnerId
+    userTargetId
+    type
+    createdAt
+    updatedAt
+    friendInfos {
+      id
+      username
+      avatarUrl
+      ratio
+    }
+  }
+}
+
+mutation CreateRequestFriend($args: CreateRequestFriendInput!) {
+  createRequestFriend(args: $args) {
+    userOwnerId
+    userTargetId
+    type
+    createdAt
+    updatedAt
+  }
+}
+
+mutation AcceptFriendRequest($args: UpdateUserRelationInput!) {
+  acceptFriendRequest(args: $args) {
+    userOwnerId
+    userTargetId
+    type
+    createdAt
+    updatedAt
+  }
+}
+
+mutation RefuseFriendRequest($args: UpdateUserRelationInput!) {
+  refuseFriendRequest(args: $args) {
+    userOwnerId
+    userTargetId
+    type
+    createdAt
+    updatedAt
+  }
+}
+
+mutation RemoveFriend($args: UpdateUserRelationInput!) {
+  removeFriend(args: $args) {
+    userOwnerId
+    userTargetId
+    type
+    createdAt
+    updatedAt
+  }
+}
+
+mutation BlockRelation($userTargetId: String!) {
+  blockRelation(args: { userTargetid: $userTargetId }) {
+    userOwnerId
+    userTargetId
+    type
+    createdAt
+    updatedAt
+  }
+}
+
+mutation UnblockRelation($userTargetId: String!) {
+  unblockRelation(args: { userTargetid: $userTargetId }) {
+    userOwnerId
+    userTargetId
+    type
+    createdAt
+    updatedAt
+  }
+}
+
+subscription onUserRelationsChanged($userId: String!) {
+  userRelationsChanged(userId: $userId) {
+    userOwnerId
+    userTargetId
+    type
+    createdAt
+    updatedAt
+    friendInfos {
+      id
+      username
+      avatarUrl
+      ratio
+    }
+  }
+}
+
+query FindAllFriendsForUser {
+  findAllFriendsForUser {
+    userOwnerId
+    userTargetId
+    type
+    createdAt
+    updatedAt
+    userTarget {
+      id
+      username
+      avatarUrl
+    }
+    friendInfos {
+      id
+      username
+      avatarUrl
+      ratio
+    }
+  }
+}
+
+query FindAllBlockedForUser {
+  findAllBlockedForUser {
+    userOwnerId
+    userTargetId
+    type
+    createdAt
+    updatedAt
+    userTarget {
+      id
+      username
+      avatarUrl
+    }
+    friendInfos {
+      id
+      username
+      avatarUrl
+      ratio
+    }
+  }
+}
+
+query FindAllBlockedByForUser {
+  findAllBlockedByForUser {
+    userOwnerId
+    userTargetId
+    type
+    createdAt
+    updatedAt
+    userOwner {
+      id
+      username
+      avatarUrl
+    }
+    friendInfos {
+      id
+      username
+      avatarUrl
+      ratio
+    }
+  }
+}
+
+query FindRelation($userId: String!) {
+  findRelation(userId: $userId) {
+    userOwnerId
+    userTargetId
+    type
+    createdAt
+    updatedAt
+    friendInfos {
+      id
+      username
+      avatarUrl
+      ratio
+    }
+  }
+}

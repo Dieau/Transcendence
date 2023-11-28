@@ -1,0 +1,163 @@
+mutation CreateMyMemberForChannel($args: CreateMyMemberForChannelInput!) {
+  createMyMemberForChannel(args: $args) {
+    channelId
+    userId
+  }
+}
+
+mutation CreateMemberForChannel($args: CreateMemberForChannelInput!) {
+  createMemberForChannel(args: $args) {
+    channelId
+    userId
+  }
+}
+
+mutation UpdateMemberForChannel($args: UpdateMyMemberForChannelInput!) {
+  updateMemberForChannel(args: $args) {
+    channelId
+    userId
+  }
+}
+
+mutation DeleteMemberForChannel($args: DeleteMemberForChannelInput!) {
+  deleteMemberForChannel(args: $args) {
+    channelId
+    userId
+  }
+}
+
+mutation DeleteMyMemberForChannel($args: DeleteMyMemberForChannelInput!) {
+  deleteMyMemberForChannel(args: $args) {
+    channelId
+    userId
+  }
+}
+
+query FindAllChannelMembersForChannel($args: FindAllChannelMembersForChannelInput!) {
+  findAllChannelMembersForChannel(args: $args) {
+    channelId
+    userId
+    type
+    muted
+    createdAt
+    updatedAt
+    user {
+      id
+      username
+      avatarUrl
+    }
+  }
+}
+
+query FindMyChannelMemberForChannel($args: FindMyChannelMemberForChannelInput!) {
+  findMyChannelMemberForChannel(args: $args) {
+    channelId
+    userId
+    type
+    muted
+    createdAt
+    updatedAt
+  }
+}
+
+subscription OnNewChannelMemberForChannelId($args: OnChannelMemberChannelInput!) {
+  onNewChannelMemberForChannelId(args: $args) {
+    channelId
+    userId
+    type
+    muted
+    createdAt
+    updatedAt
+    user {
+      id
+      username
+      avatarUrl
+    }
+  }
+}
+
+subscription OnUpdateChannelMemberForChannelId($args: OnChannelMemberChannelInput!) {
+  onUpdateChannelMemberForChannelId(args: $args) {
+    channelId
+    userId
+    type
+    muted
+    createdAt
+    updatedAt
+    user {
+      id
+      username
+      avatarUrl
+    }
+  }
+}
+
+subscription OnDeleteChannelMemberForChannelId($args: OnChannelMemberChannelInput!) {
+  onDeleteChannelMemberForChannelId(args: $args) {
+    channelId
+    userId
+    type
+    muted
+    createdAt
+    updatedAt
+    user {
+      id
+      username
+      avatarUrl
+    }
+  }
+}
+
+subscription OnNewChannelMemberForUserId($args: OnChannelMemberUserInput!) {
+  onNewChannelMemberForUserId(args: $args) {
+    channelId
+    userId
+    type
+    muted
+    createdAt
+    updatedAt
+    channel {
+      id
+      name
+      avatarUrl
+      channelType
+      createdAt
+    }
+  }
+}
+
+subscription OnUpdateChannelMemberForUserlId($args: OnChannelMemberUserInput!) {
+  onUpdateChannelMemberForUserlId(args: $args) {
+    channelId
+    userId
+    type
+    muted
+    createdAt
+    updatedAt
+    channel {
+      id
+      name
+      avatarUrl
+      channelType
+      createdAt
+    }
+  }
+}
+
+subscription OnDeleteChannelMemberForUserlId($args: OnChannelMemberUserInput!) {
+  onDeleteChannelMemberForUserlId(args: $args) {
+    channelId
+    userId
+    type
+    muted
+    createdAt
+    updatedAt
+    channel {
+      id
+      name
+      avatarUrl
+      channelType
+      createdAt
+    }
+  }
+}

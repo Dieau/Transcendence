@@ -1,0 +1,202 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+//**************************************************//
+//  USER
+//**************************************************//
+
+model User {
+  id         String  @id @default(nanoid())
+  doubleAuth Boolean @default(false)
+  avatarUrl  String? @default("https://img-4.linternaute.com/q_N1jQGmO8sUI6v2LOGFcRrXqpE=/1500x/smart/08e82cbcdf5a42c8b79808bc6b15792a/ccmcms-linternaute/48672760.jpg")
+
+  password                  String?
+  email                     String  @unique
+  username                  String  @unique
+  twoFactorAuthSecret       String?
+  googleAuthenticatorQrCode String?
+
+  providerName String?
+  providerId   String?
+  isOauth      Boolean?
+
+  language EUserLanguage @default(Default)
+
+  relationFollowers  UserRelation[] @relation("relationFollowers")
+  relationFollowings UserRelation[] @relation("relationFollowings")
+
+  channelMembers  ChannelMember[]
+  channelMessages ChannelMessage[]
+
+  gameStats             GameStat[]
+  gameMember            GameMember?
+  gameMatchmakingMember GameMatchmakingMember?
+  UserPresence          UserPresence?
+}
+
+model UserPresence {
+  id String @id @default(nanoid())
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @unique
+
+  connected EUserPresenceStatus @default(Offline)
+  updatedAt DateTime            @updatedAt
+}
+
+model UserRelation {
+  userOwner   User   @relation("relationFollowers", fields: [userOwnerId], references: [id], onDelete: Cascade)
+  userOwnerId String
+
+  userTarget   User   @relation("relationFollowings", fields: [userTargetId], references: [id], onDelete: Cascade)
+  userTargetId String
+
+  type EUserRelationType
+
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+
+  @@id([userOwnerId, userTargetId])
+}
+
+//**************************************************//
+//  CHANNEL
+//**************************************************//
+
+model Channel {
+  id              String           @id @default(nanoid())
+  name            String
+  avatarUrl       String?
+  password        String?
+  channelType     EChannelType
+  channelMembers  ChannelMember[]
+  channelMessages ChannelMessage[]
+  createdAt       DateTime         @default(now())
+}
+
+model ChannelMember {
+  channel         Channel            @relation(fields: [channelId], references: [id], onDelete: Cascade)
+  channelId       String
+  user            User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId          String
+  type            EChannelMemberType @default(Default)
+  muted           Boolean            @default(false)
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
+  channelMessages ChannelMessage[]
+
+  @@id([channelId, userId])
+}
+
+model ChannelMessage {
+  id            String        @default(nanoid())
+  message       String
+  channel       Channel       @relation(fields: [channelId], references: [id], onDelete: Cascade)
+  user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  channelMember ChannelMember @relation(fields: [channelId, userId], references: [channelId, userId], onDelete: Cascade)
+  channelId     String
+  userId        String
+
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+
+  @@id([id, userId])
+}
+
+//**************************************************//
+//  GAME
+//**************************************************//
+
+model Game {
+  id           String       @id @default(nanoid())
+  gameMembers  GameMember[]
+  message      String?      @default("Join this game to play against me !")
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  isDeleted    Boolean      @default(false)
+  targetUserId String?
+}
+
+model GameMember {
+  game      Game     @relation(fields: [gameId], references: [id], onDelete: Cascade)
+  gameId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  score     Int      @default(0)
+
+  @@id([gameId, userId])
+}
+
+model GameStat {
+  id            String   @default(nanoid())
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId        String
+  opponentId    String
+  createdAt     DateTime @default(now())
+  isWinner      Boolean
+  userScore     String
+  opponentScore String
+  isFakeData    Boolean  @default(false)
+
+  @@id([id, userId])
+}
+
+model GameMatchmakingMember {
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId       String   @id @unique
+  createdAt    DateTime @default(now())
+  isDeleted    Boolean  @default(false)
+  message      String?  @default("Join this game to play against me !")
+  targetUserId String?
+  isLaunched   Boolean?
+}
+
+//**************************************************//
+//  ENUM
+//**************************************************//
+
+enum EUserLanguage {
+  Default
+  Fr
+  En
+}
+
+enum EUserPresenceStatus {
+  Online
+  InGame
+  Offline
+}
+
+enum EUserRelationType {
+  WaitingAccept
+  PendingAccept
+  Friend
+  Blocked
+  Terminated
+}
+
+enum EChannelType {
+  Public
+  Protected
+  Private
+  Direct
+}
+
+enum EChannelMemberType {
+  Default
+  Admin
+  Owner
+  Banned
+  Invited
+}

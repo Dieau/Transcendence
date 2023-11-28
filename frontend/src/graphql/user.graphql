@@ -1,0 +1,107 @@
+query FindLeaderboardUserList {
+  findLeaderboardUserList {
+    id
+    username
+    avatarUrl
+    ratio
+    winrate
+  }
+}
+
+query FindMyUser {
+  findMyUser {
+    id
+    doubleAuth
+    avatarUrl
+    username
+    isOauth
+  }
+}
+
+query FindUserTwoFaSettings {
+  findUserTwoFaSettings {
+    googleAuthenticatorQrCode
+  }
+}
+
+mutation UpdateMyUser($args: UpdateMyUserInput!) {
+  updateMyUser(args: $args) {
+    id
+    doubleAuth
+    avatarUrl
+    username
+    isOauth
+  }
+}
+
+mutation UpdateMyPassword($args: UpdateMyPasswordInput!) {
+  updateMyPassword(args: $args)
+}
+
+mutation IsGoogleAuthCodeValid($args: GoogleAuthCodeValidatorInput!) {
+  isGoogleAuthCodeValid(args: $args)
+}
+
+query FindPublicGameRatios($userid: String!) {
+    findPublicGameRatios(userid: $userid) {
+        date
+        ratio
+    }
+}
+
+query findGeneralGameStatsForUser {
+  findGeneralGameStatsForUser {
+    gamesCount
+    allTimeRatio
+    MeanPoints
+    leaderBoardPosition
+  }
+}
+
+query FindAllGameStatsForUser {
+  findAllGameStatsForUser {
+    id
+    opponentId
+    isWinner
+    userScore
+    opponentScore
+    createdAt
+  }
+}
+
+query findPublicGeneralGameStatsForUser($userid: String!) {
+  findPublicGeneralGameStatsForUser(userid: $userid) {
+    gamesCount
+    allTimeRatio
+    MeanPoints
+    leaderBoardPosition
+  }
+}
+
+query FindAllPublicGameStatsForUser($userid: String!) {
+  findAllPublicGameStatsForUser(userid: $userid) {
+    id
+    opponentId
+    isWinner
+    userScore
+    opponentScore
+    createdAt
+  }
+}
+
+query FindUser($args: FindUserInput!) {
+  findUser(args: $args) {
+    id
+    username
+    avatarUrl
+  }
+}
+
+query FindPublicUsersList {
+  findPublicUsersList {
+    id
+    username
+    avatarUrl
+  }
+}
+

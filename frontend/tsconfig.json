@@ -1,0 +1,17 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.web.json",
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "src/**/**/*.vue", "src/**/**/**/*.vue", "src/**/**/**/**/*.vue", "src/**/**/**/**/*/*.vue", "src/**/**/**/**/*/*.vue", "src/**/**/**/**/*/*/*.vue", "src/*"],
+  "compilerOptions": {
+    "lib": ["es2022", "dom"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
+}

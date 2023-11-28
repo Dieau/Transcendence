@@ -1,0 +1,26 @@
+query FindUserPresence($args: FindUserPresencesInput!) {
+  findUserPresence(args: $args) {
+    id
+    userId
+    connected
+    updatedAt
+  }
+}
+
+mutation UpdateUserPresence($args: UpdateUserPresenceInput!) {
+  updateUserPresence(args: $args) {
+    id
+    userId
+    connected
+    updatedAt
+  }
+}
+
+subscription OnUpdateUserPresence($args: OnUpdateUserPresenceInput!) {
+  onUpdateUserPresence(args: $args) {
+    id
+    userId
+    connected
+    updatedAt
+  }
+}

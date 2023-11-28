@@ -1,0 +1,21 @@
+mutation SignInLocal($args: SignInLocalInput!) {
+  signInLocal(args: $args) {
+    avatarUrl
+    doubleAuth
+    id
+    username
+  }
+}
+
+mutation SignUpLocal($args: SignUpLocalInput!) {
+  signUpLocal(args: $args) {
+    id
+    username
+    avatarUrl
+    doubleAuth
+  }
+}
+
+mutation Logout {
+  logout
+}
