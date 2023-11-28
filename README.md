@@ -92,7 +92,7 @@ A game is finished once a player reaches 11 points. The player performance is se
 
 # Leaderboards
 ![unnamed (4)](https://github.com/Dieau/Transcendance/assets/13594148/d4b952fa-8e03-40bc-aaff-fa8b97a3a1bf)
-A simple leaderboards page where users can check rankings, stats, and other player's performances.
+A simple leaderboards page where users can check rankings, stats, and other players' performances.
 
 # Chat & Messages
 ![unnamed (5)](https://github.com/Dieau/Transcendance/assets/13594148/9310afb1-5013-4a54-ad41-e9deb40964dc)
