@@ -69,6 +69,7 @@ Here you'll find some screenshots of different pages, and game parts of our webs
 # Login Page
 ![unnamed (1)](https://github.com/Dieau/Transcendance/assets/13594148/54ae7142-96c4-4352-a05b-18c8c06db888)
 Users can login through 4 different OAuth providers, or create a local account managed by us. Users can also opt for 2FA authentication for more security.
+Background is animated in pure css and custom anti-aliasing.
 
 # Local Play
 ![unnamed (2)](https://github.com/Dieau/Transcendance/assets/13594148/6f530c83-d4ff-4bd4-8b60-a37953699bd3)
